@@ -10,16 +10,22 @@ exports.getBooks = async (req, res) => {
 
         let query = {};
         const searchText = req.query.searchText;
-        const searchCat = req.query.searchCat
+        const searchCat = req.query.searchCat;
+        const searchWriter = req.query.searchWriter;
         const regex = new RegExp(searchText, "i");
 
-        
-        if (searchText && searchCat) {
-            query = { name: { $regex: regex }, category: searchCat }
+
+        if (searchText && searchCat && searchWriter) {
+            query = { name: { $regex: regex }, category: searchCat, writer: searchWriter }
+
         } else if (searchText) {
             query = { name: { $regex: regex } }
+
         } else if (searchCat) {
             query = { category: searchCat }
+
+        } else if (searchWriter) {
+            query = { writer: searchWriter }
         }
 
 
