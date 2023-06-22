@@ -6,7 +6,9 @@ const Routes = require('./router/index');
 
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({extended: true}));
+app.use(express.raw());
+app.use(express.static("public"));
 const connectToDatabase = require('./configure/config_db');
 connectToDatabase();
 

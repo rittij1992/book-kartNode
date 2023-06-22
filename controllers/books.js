@@ -87,7 +87,7 @@ exports.getBookByCatId = async (req, res) => {
     }
 }
 
-exports.addBook = async (req, res) => {
+/*exports.addBook = async (req, res) => {
     try {
         const { name, writer, release, category } = req.body;
         const coverImage = req.file.path;
@@ -97,7 +97,22 @@ exports.addBook = async (req, res) => {
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
-};
+};*/
+
+
+exports.addBook = async (req, res) => {
+    try {
+        const { name, writer, release, category } = req.body;
+        console.log(name);
+        // const coverImage = req.file.path;
+        // const newBook = new books({ name, coverImage, writer, release, category });
+        // const addBookData = await newBook.save();
+        res.status(200).json({ message: 'Book added successfully', });
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+}
+
 
 exports.updateBook = async (req, res) => {
     try {

@@ -2,7 +2,7 @@ const multer = require('multer');
 
 const bookImageStorage =  multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, 'Public/BookCovers/')
+      cb(null, 'public/BookCovers/')
     },
     filename: function (req, file, cb) {
       cb(null, file.fieldname + '-' + Date.now() + '.' + file.originalname.split('.').pop())
