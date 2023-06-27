@@ -87,9 +87,10 @@ exports.getBookByCatId = async (req, res) => {
     }
 }
 
-/*exports.addBook = async (req, res) => {
+exports.addBook = async (req, res) => {
     try {
         const { name, writer, release, category } = req.body;
+        console.log(req.body);
         const coverImage = req.file.path;
         const newBook = new books({ name, coverImage, writer, release, category });
         const addBookData = await newBook.save();
@@ -97,21 +98,8 @@ exports.getBookByCatId = async (req, res) => {
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
-};*/
+};
 
-
-exports.addBook = async (req, res) => {
-    try {
-        const { name, writer, release, category } = req.body;
-        console.log(name);
-        // const coverImage = req.file.path;
-        // const newBook = new books({ name, coverImage, writer, release, category });
-        // const addBookData = await newBook.save();
-        res.status(200).json({ message: 'Book added successfully', });
-    } catch (error) {
-        res.status(400).json({ message: error.message });
-    }
-}
 
 
 exports.updateBook = async (req, res) => {
@@ -124,6 +112,25 @@ exports.updateBook = async (req, res) => {
         res.status(400).json({ message: error.message });
     }
 };
+
+
+/*exports.updateBook = async (req, res) => {
+    try {
+        const bookId = req.params.id;
+        const { name, writer, release, category } = req.body;
+        const coverImage = req.file.path;
+
+        if(coverImage){
+            const updateBook = await books.findByIdAndUpdate(bookId, { name, coverImage, writer, release, category });
+        }else {
+            const updateBook = await books.findByIdAndUpdate(bookId, { name, writer, release, category });
+        }    
+        res.status(200).json({ message: 'Book updated successfully', updateBook });
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+};*/
+
 
 exports.deleteBook = async (req, res) => {
     try {
